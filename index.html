@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+	<div class="divitems">
+		<button id="1" onclick="totalprice(this,10)">(0) <span>Ballpoint</span><br>Rs. 10</button>
+		<button id="2" onclick="totalprice(this,2)">(0) <span>BP Spacer</span><br>Rs. 2</button>
+		<button id="3" onclick="totalprice(this,15)">(0) <span>Butter Crunch</span><br>Rs. 15</button>
+		<button id="4" onclick="totalprice(this,5)">(0) <span>Chilli Milli</span><br>Rs. 5</button>
+		<button id="5" onclick="totalprice(this,10)">(0) <span>Chocolate Chip</span><br>Rs. 10</button>
+		<button id="6" onclick="totalprice(this,5)">(0) <span>Cocomo</span><br>Rs. 5</button>
+		<button id="7" onclick="totalprice(this,50)">(0) <span>Coke 1/2 L</span><br>Rs. 50</button>
+		<button id="8" onclick="totalprice(this,5)">(0) <span>Crunch Nimko</span><br>Rs. 5</button>
+		<button id="9" onclick="totalprice(this,10)">(0) <span>Cup Cake</span><br>Rs. 10</button>
+		<button id="10" onclick="totalprice(this,10)">(0) <span>Dairy Milk</span><br>Rs. 10</button>
+		<button id="11" onclick="totalprice(this,40)">(0) <span>Dew 300ml</span><br>Rs. 40</button>
+		<button id="12" onclick="totalprice(this,20)">(0) <span>Gala</span><br>Rs. 20</button>
+		<button id="13" onclick="totalprice(this,20)">(0) <span>Green Tea</span><br>Rs. 20</button>
+		<button id="14" onclick="totalprice(this,20)">(0) <span>Kurkury</span><br>Rs. 20</button>
+		<button id="15" onclick="totalprice(this,30)">(0) <span>Lays</span><br>Rs. 30</button>
+		<button id="16" onclick="totalprice(this,60)">(0) <span>Liche Tops</span><br>Rs. 60</button>
+		<button id="17" onclick="totalprice(this,10)">(0) <span>Maroonda</span><br>Rs. 10</button>
+		<button id="18" onclick="totalprice(this,5)">(0) <span>Mighty Chip</span><br>Rs. 5</button>
+		<button id="19" onclick="totalprice(this,45)">(0) <span>Milo</span><br>Rs. 45</button>
+		<button id="20" onclick="totalprice(this,20)">(0) <span>Naan Khatai</span><br>Rs. 20</button>
+		<button id="21" onclick="totalprice(this,40)">(0) <span>Nestle Furtavital</span><br>Rs. 40</button>
+		<button id="22" onclick="totalprice(this,5)">(0) <span>Now Chocolate</span><br>Rs. 5</button>
+		<button id="23" onclick="totalprice(this,20)">(0) <span>Orbis</span><br>Rs. 20</button>
+		<button id="24" onclick="totalprice(this,20)">(0) <span>Oreo</span><br>Rs. 20</button>
+		<button id="25" onclick="totalprice(this,10)">(0) <span>Perk</span><br>Rs. 10</button>
+		<button id="26" onclick="totalprice(this,20)">(0) <span>Prince</span><br>Rs. 20</button>
+		<button id="27" onclick="totalprice(this,10)">(0) <span>Salanty</span><br>Rs. 10</button>
+		<button id="28" onclick="totalprice(this,5)">(0) <span>Softmint</span><br>Rs. 5</button>
+		<button id="29" onclick="totalprice(this,20)">(0) <span>Super</span><br>Rs. 20</button>
+		<button id="30" onclick="totalprice(this,30)">(0) <span>Table Tennis Ball</span><br>Rs. 30</button>
+		<button id="31" onclick="totalprice(this,25)">(0) <span>Tea</span><br>Rs. 25</button>
+		<button id="32" onclick="totalprice(this,2)">(0) <span>Toss Jelly</span><br>Rs. 2</button>
+		<button id="33" onclick="totalprice(this,2)">(0) <span>Twisto Jelly</span><br>Rs. 2</button>
+		<button id="34" onclick="totalprice(this,30)">(0) <span>Water 1/2</span><br>Rs. 30</button>
+		<button id="35" onclick="totalprice(this,20)">(0) <span>Zera Plus</span><br>Rs. 20</button>
+
+		<button onclick="removeprice()" id='remove'>
+			Remove<br>.
+		</button>
+
+	</div>
+	<div class="divhist">
+		<div id="hist">
+			
+		</div>
+		<div id="tprice">
+			Total Sale: Rs. 0
+		</div>
+	</div>
+	<div>
+		<button onclick="CSVConvertor()" id='export'>Export</button>
+	</div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		var elem = document.getElementById('hist');
+		var count=0;
+		var sale=0;
+		var latestitem=[];
+		var name='';
+		var items = ['','Ballpoint', 'BP Spacer', 'Butter Crunch', 'Chilli Milli', 'Chocolate Chip', 'Cocomo', 'Coke 1/2 L', 'Crunch Nimko', 'Cup Cake', 'Dairy Milk', 'Dew 300ml', 'Gala', 'Green Tea', 'Kurkury', 'Lays', 'Liche Tops', 'Maroonda', 'Mighty Chip', 'Milo', 'Naan Khatai', 'Nestle Furtavital', 'Now Chocolate', 'Orbis', 'Oreo', 'Perk', 'Prince', 'Salanty', 'Softmint', 'Super', 'Table Tennis Ball', 'Tea', 'Toss Jelly', 'Twisto Jelly', 'Water 1/2', 'Zera Plus']
+		var iprices = [0,10, 2, 15, 5, 10, 5, 50, 5, 10, 10, 40, 20, 20, 20, 30, 60, 10, 5, 45, 20, 40, 5, 20, 20, 10, 20, 10, 5, 20, 30, 25, 2, 2, 30, 20]
+		var indivcount=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+		
+
+		function removeprice(){
+
+			if (count>0){
+				index= items.indexOf(latestitem[0].trim());
+				count--;
+				if (count<10)
+					$('#hist').append('<span class="colour-red" >0'+count+') REMOVED '+latestitem[0]+'<span><br>');
+				else
+					$('#hist').append('<span class="colour-red" >'+count+') REMOVED '+latestitem[0]+'<span><br>');
+
+				sale-=iprices[index];
+				indivcount[index]-=1;
+				latestitem.shift();
+				$('#'+index).html('('+indivcount[index]+') <span>'+items[index]+'</span><br>Rs. '+iprices[index]);
+				$('#tprice').text('Total Sale: Rs. '+sale);
+
+		    	elem.scrollTop = elem.scrollHeight;
+			}
+		}
+
+		function totalprice(btn,price){
+			name = $(btn).children(":first").text();
+			latestitem.unshift(name);
+			index=items.indexOf(name);
+			indivcount[index]+=1;
+			$(btn).html('('+indivcount[index]+') <span>'+name+'</span><br>Rs. '+iprices[index]);
+
+			count++;
+			if (count<10)
+				$('#hist').append('0'+count+') '+latestitem[0]+'<br>');
+			else
+				$('#hist').append(    count+') '+latestitem[0]+'<br>');
+
+			sale+=price;
+			$('#tprice').text('Total Sale: Rs. '+sale);
+
+		    elem.scrollTop = elem.scrollHeight;
+		}
+
+		function CSVConvertor() {
+		  var CSV = '';
+		  //Set Report title in first row or line
+
+		  CSV += 'Sale Report' + '\n\n';
+		  CSV += 'Total Sale: '+ sale + '\r\n';
+		  CSV += 'Total Items Sold: '+ count + '\r\n\n';	
+		  CSV += 'Item,Price per Item,Count,Total Price\r\n';	  
+		  var checksum=0;
+		  //1st loop is to extract each row
+		  for (var i = 1; i < items.length; i++) {
+		  	sum=iprices[i]*indivcount[i]
+		    CSV += items[i] +','+ iprices[i] +','+indivcount[i] +','+ sum + '\r\n';
+		    checksum+=sum;
+		  }
+		  CSV += ',,,'+checksum+'\r\n';	  
+
+		  //Generate a file name
+		  var fileName = "Sale Report_";
+
+		  //Initialize file format you want csv or xls
+		  var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+
+		  // Now the little tricky part.
+		  // you can use either>> window.open(uri);
+		  // but this will not work in some browsers
+		  // or you will not get the correct file extension    
+
+		  //this trick will generate a temp <a /> tag
+		  var link = document.createElement("a");
+		  link.href = uri;
+
+		  //set the visibility hidden so it will not effect on your web-layout
+		  link.style = "visibility:hidden";
+		  link.download = fileName + ".csv";
+
+		  //this part will append the anchor tag and remove it after automatic click
+		  document.body.appendChild(link);
+		  link.click();
+		  document.body.removeChild(link);
+		}
+
+	</script>
+</body>
+</html>

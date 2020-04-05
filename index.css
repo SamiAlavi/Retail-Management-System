@@ -1,0 +1,46 @@
+.divitems{
+	float: left;
+	width: 80%;
+	height: 90vh;
+	border: 1px solid black;
+	border-right: none;
+	border-left: none;
+}
+.divhist{
+	float: left;
+	width: 20%;
+	height: 90vh;
+	border: 1px solid red;
+	border-left: none;
+	border-right: none;
+}
+#hist{
+	height: 90%;
+	overflow-y: scroll;
+	padding-bottom: 2em;
+}
+#tprice{
+	border-top: 1px solid black;
+}
+#remove{
+	background-color: black;
+	color: white;
+}
+.colour-red{
+	background-color: black;
+	color: red;
+	width: 100%;
+}
+#export{
+	width: 100%;
+	background: red;
+	color: black;
+	height: 6.5vh;
+	font-size: 2em;
+
+}
+button{
+	width: 15%;
+	height: 15%;
+	margin: 0.2%;
+}
